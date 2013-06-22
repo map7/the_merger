@@ -40,10 +40,10 @@ Currently it's just one method and this is how you pass it information
 
 ## TODO
 
-Get all users from the users table
-Mail merge and output to the screen
-Create a generator which creates a config file, or read from environment.rb?
-Make the table a variable
-Create a method to get all fields from the selected table.
-Create a helper method to have a dropdown of fields
+- Get all users from the users table
+- Mail merge and output to the screen
+- Create a generator which creates a config file, or read from environment.rb?
+- Make the table a variable
+- Create a method to get all fields from the selected table.
+- Create a helper method to have a dropdown of fields
 
