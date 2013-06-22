@@ -26,6 +26,10 @@ module TheMerger
     end
   end
 
+  def self.model_fields
+    puts @merge_model.constantize.attribute_names.reject{|x| %w[created_at updated_at id].include?(x)}
+  end
+  
   private
 
   def self.parse_config
