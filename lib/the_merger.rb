@@ -23,8 +23,8 @@ module TheMerger
   end
 
   def field_selection
-    TheMerger.parse_config
-    fields=@merge_mode.constantize.attribute_names.reject{|x| %w[created_at updated_at id].include?(x)}
+    parse_config
+    fields=@merge_model.constantize.attribute_names.reject{|x| %w[created_at updated_at id].include?(x)}
     body = select_tag :field, options_for_select(fields)
     body += button_tag "Insert"
     content_tag(:div, body, class: "merge_field")
