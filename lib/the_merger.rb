@@ -10,7 +10,7 @@ module TheMerger
   def self.merger
     puts 'Mail Merge test'
   end
-  
+
   def self.merge_fields(original_body, *fields)
     self.parse_config
     
@@ -26,8 +26,16 @@ module TheMerger
     end
   end
 
+  def merge_fields
+    fields=User.attribute_names.reject{|x| %w[created_at updated_at id].include?(x)}
+    body = select_tag :field, options_for_select(fields)
+    body += button_tag "Insert"
+    content_tag(:div, body, class: "merge_field")
+  end
+  
   def self.model_fields
-    puts @merge_model.constantize.attribute_names.reject{|x| %w[created_at updated_at id].include?(x)}
+    self.parse_config
+    @merge_model.constantize.attribute_names.reject{|x| %w[created_at updated_at id].include?(x)}
   end
   
   private
@@ -43,3 +51,5 @@ module TheMerger
     end
   end  
 end
+
+ActionView::Base.send :include, TheMerger
