@@ -13,9 +13,8 @@ module TheMerger
   
   def self.merge_fields(original_body, *fields)
     self.parse_config
-    puts @merge_model
     
-    User.all.each do |user|
+    @merge_model.constantize.all.each do |user|
       puts "User: #{user.firstname}"
       
       body = original_body.dup

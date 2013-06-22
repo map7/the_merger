@@ -22,6 +22,13 @@ Or install it yourself as:
 
     $ gem install the_merger
 
+## Configure
+
+Create a yaml file in your config directory called 'the_merger.yml' with something like this
+
+    ---
+    merge_model: "Client"
+
 ## Usage
 
 Currently it's just one method and this is how you pass it information
