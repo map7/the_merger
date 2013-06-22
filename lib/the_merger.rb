@@ -4,15 +4,11 @@ module TheMerger
   #
   # Default settings for TheMerger
   # 
-  # merge_model:   User
+  # - merge_model:   User
   #
-  
-  def self.merger
-    puts 'Mail Merge test'
-  end
 
-  def self.merge_fields(original_body, *fields)
-    self.parse_config
+  def merge_fields(original_body, *fields)
+    parse_config
     
     @merge_model.constantize.all.each do |user|
       puts "User: #{user.firstname}"
@@ -26,21 +22,17 @@ module TheMerger
     end
   end
 
-  def merge_fields
-    fields=User.attribute_names.reject{|x| %w[created_at updated_at id].include?(x)}
+  def field_selection
+    TheMerger.parse_config
+    fields=@merge_mode.constantize.attribute_names.reject{|x| %w[created_at updated_at id].include?(x)}
     body = select_tag :field, options_for_select(fields)
     body += button_tag "Insert"
     content_tag(:div, body, class: "merge_field")
   end
   
-  def self.model_fields
-    self.parse_config
-    @merge_model.constantize.attribute_names.reject{|x| %w[created_at updated_at id].include?(x)}
-  end
-  
   private
 
-  def self.parse_config
+  def parse_config
     path = "#{Rails.root}/config/the_merger.yml"
     
     if File.exists?(path)

@@ -24,6 +24,10 @@ Or install it yourself as:
 
 ## Configure
 
+When using TheMerger in a controller you have to add the following line to the top
+    
+    include TheMerger
+
 Create a yaml file in your config directory called 'the_merger.yml' with something like this
 
     ---
