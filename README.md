@@ -24,7 +24,11 @@ Or install it yourself as:
 
 ## Usage
 
-TODO: Write usage instructions here
+Currently it's just one method and this is how you pass it information
+
+    body = "Dear [firstname] [lastname], Please update your listing, from Mick"
+    TheMerger.merge_fields(body, "firstname", "lastname")
+
 
 ## Contributing
 
@@ -33,3 +37,13 @@ TODO: Write usage instructions here
 3. Commit your changes (`git commit -am 'Add some feature'`)
 4. Push to the branch (`git push origin my-new-feature`)
 5. Create new Pull Request
+
+## TODO
+
+Get all users from the users table
+Mail merge and output to the screen
+Create a generator which creates a config file, or read from environment.rb?
+Make the table a variable
+Create a method to get all fields from the selected table.
+Create a helper method to have a dropdown of fields
+
