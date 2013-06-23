@@ -33,6 +33,12 @@ Create a yaml file in your config directory called 'the_merger.yml' with somethi
     ---
     merge_model: "Client"
 
+
+To use the javascript included in this gem put the following in your application.js
+
+    //= require the_merger/insert_field
+
+
 ## Usage
 
 Currently it's just one method and this is how you pass it information
@@ -51,12 +57,10 @@ Currently it's just one method and this is how you pass it information
 
 ## TODO
 
-- Get all users from the users table
-- Mail merge and output to the screen
-- Create a generator which creates a config file, or read from environment.rb?
-- Make the table a variable
-- Create a method to get all fields from the selected table.
-- Create a helper method to have a dropdown of fields
-
+DONE - Get all users from the users table
+DONE - Mail merge and output to the screen
+DONE - Make the table a variable
+DONE - Create a method to get all fields from the selected table.
+DONE - Create a helper method to have a dropdown of fields
 - Turn this into an engine so that I can include asset pipeline javascript.
 
