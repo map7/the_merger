@@ -1,8 +1,5 @@
 class window.TheMerger 
 
-  foobar: ->
-    alert 'foo'
-
   insert_field: (body,field) ->
     start=body.caret().start;
     first_half=body.val().slice(0, start);
