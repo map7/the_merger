@@ -58,3 +58,5 @@ Currently it's just one method and this is how you pass it information
 - Create a method to get all fields from the selected table.
 - Create a helper method to have a dropdown of fields
 
+- Turn this into an engine so that I can include asset pipeline javascript.
+
