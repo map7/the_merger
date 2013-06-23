@@ -39,6 +39,15 @@ To use the javascript included in this gem put the following in your application
     //= require the_merger/insert_field
 
 
+To use the JS function and bind it to a button do the following
+
+   $ ->
+     the_merger = new TheMerger
+
+   $('.insert_field').click ->
+     the_merger.insert_field($(".mail_merge_body"), $("#field").val())
+     false
+
 ## Usage
 
 Currently it's just one method and this is how you pass it information
