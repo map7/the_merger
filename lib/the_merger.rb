@@ -7,7 +7,7 @@ module TheMerger
   # - merge_model:   User
   #
 
-  def merge_fields(original_body)
+  def merge_fields(subject,original_body)
     parse_config
     
     @merge_model.constantize.all.each do |user|
@@ -20,6 +20,12 @@ module TheMerger
         body = newbody unless newbody.nil?
       end
       puts "body = #{body}"
+
+      # Send the emails
+      #mailer = MergeMailer.batch_mail("from@example.com", subject, body, user)
+      mailer = TheMerger::Mailer.batch_mail("from@example.com", subject, body, user)
+      mailer.deliver
+
     end
   end
 
