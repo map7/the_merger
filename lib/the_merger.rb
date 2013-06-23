@@ -47,4 +47,5 @@ module TheMerger
   end  
 end
 
+require "the_merger/engine"
 ActionView::Base.send :include, TheMerger
