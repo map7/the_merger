@@ -36,17 +36,7 @@ Create a yaml file in your config directory called 'the_merger.yml' with somethi
 
 To use the javascript included in this gem put the following in your application.js
 
-    //= require the_merger/insert_field
-
-
-To use the JS function and bind it to a button do the following
-
-   $ ->
-     the_merger = new TheMerger
-
-   $('.insert_field').click ->
-     the_merger.insert_field($(".mail_merge_body"), $("#field").val())
-     false
+    //= require the_merger/application
 
 ## Usage
 
