@@ -7,7 +7,7 @@ module TheMerger
   # - merge_model:   User
   #
 
-  def merge_fields(original_body, *fields)
+  def merge_fields(original_body)
     parse_config
     
     @merge_model.constantize.all.each do |user|
@@ -15,10 +15,11 @@ module TheMerger
       
       body = original_body.dup
       
-      fields.each do |field|
-        body = body.gsub!("[#{field}]", user.send(field))
-        puts "body = #{body}"
+      model_fields.each do |field|
+        newbody = body.gsub!("[#{field}]", user.send(field))
+        body = newbody unless newbody.nil?
       end
+      puts "body = #{body}"
     end
   end
 
