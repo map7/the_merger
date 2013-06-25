@@ -56,10 +56,10 @@ Currently it's just one method and this is how you pass it information
 
 ## TODO
 
-DONE - Get all users from the users table
-DONE - Mail merge and output to the screen
-DONE - Make the table a variable
-DONE - Create a method to get all fields from the selected table.
-DONE - Create a helper method to have a dropdown of fields
-DONE - Turn this into an engine so that I can include asset pipeline javascript.
-- Get the Email all button to work
+ - DONE - Get all users from the users table
+ - DONE - Mail merge and output to the screen
+ - DONE - Make the table a variable
+ - DONE - Create a method to get all fields from the selected table.
+ - DONE - Create a helper method to have a dropdown of fields
+ - DONE - Turn this into an engine so that I can include asset pipeline javascript.
+ - Get the Email all button to work
