@@ -11,18 +11,14 @@ module TheMerger
     parse_config
     
     @merge_model.constantize.all.each do |user|
-      puts "User: #{user.firstname}"
-      
       body = original_body.dup
       
       model_fields.each do |field|
         newbody = body.gsub!("[#{field}]", user.send(field))
         body = newbody unless newbody.nil?
       end
-      puts "body = #{body}"
 
       # Send the emails
-      #mailer = MergeMailer.batch_mail("from@example.com", subject, body, user)
       mailer = TheMerger::Mailer.batch_mail("from@example.com", subject, body, user)
       mailer.deliver
 
