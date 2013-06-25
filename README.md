@@ -41,6 +41,12 @@ To use the javascript included in this gem put the following in your application
 
     //= require the_merger/application
 
+
+Where you need to insert fields (I usually create a 'letters' table) put the following in the form, just above the text_area.
+
+    <%= field_selection %>
+
+
 ## Usage
 
 Currently it's just one method and this is how you pass it information
