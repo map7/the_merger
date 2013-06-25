@@ -10,7 +10,7 @@ Gem::Specification.new do |gem|
   gem.email         = ["map7777@gmail.com"]
   gem.description   = %q{Mail merge a table of fields into a standard letter}
   gem.summary       = %q{Mail Merge}
-  gem.homepage      = ""
+  gem.homepage      = "https://github.com/map7/the_merger"
 
   # gem.add_development_dependency "mail"
 
