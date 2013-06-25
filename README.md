@@ -8,6 +8,9 @@ A mail merge gem which allows you to do the following;
 - manages bulk emails
 - manages scheduled emails (optional)
 
+## Demo app
+There is a demo app here: https://github.com/map7/mailout
+
 ## Installation
 
 Add this line to your application's Gemfile:
