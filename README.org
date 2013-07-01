@@ -1,4 +1,4 @@
-# TheMerger
+* TheMerger
 
 A mail merge gem which allows you to do the following;
 - link to a table eg: clients. 
@@ -8,10 +8,10 @@ A mail merge gem which allows you to do the following;
 - manages bulk emails
 - manages scheduled emails (optional)
 
-## Demo app
+** Demo app
 There is a demo app here: https://github.com/map7/mailout
 
-## Installation
+** Installation
 
 Add this line to your application's Gemfile:
 
@@ -25,7 +25,7 @@ Or install it yourself as:
 
     $ gem install the_merger
 
-## Configure
+** Configure
 
 When using TheMerger in a controller you have to add the following line to the top
     
@@ -47,7 +47,7 @@ Where you need to insert fields (I usually create a 'letters' table) put the fol
     <%= field_selection %>
 
 
-## Usage
+** Usage
 
 Currently it's just one method and this is how you pass it information
 
@@ -55,7 +55,7 @@ Currently it's just one method and this is how you pass it information
     TheMerger.merge_fields(body, "firstname", "lastname")
 
 
-## Contributing
+** Contributing
 
 1. Fork it
 2. Create your feature branch (`git checkout -b my-new-feature`)
@@ -63,12 +63,14 @@ Currently it's just one method and this is how you pass it information
 4. Push to the branch (`git push origin my-new-feature`)
 5. Create new Pull Request
 
-## TODO
+** Tasks
+*** DONE Get all users from the users table
+*** DONE Mail merge and output to the screen
+*** DONE Make the table a variable
+*** DONE Create a method to get all fields from the selected table.
+*** DONE Create a helper method to have a dropdown of fields
+*** DONE Turn this into an engine so that I can include asset pipeline javascript.
+*** DONE Get the Email all button to work
 
- - DONE - Get all users from the users table
- - DONE - Mail merge and output to the screen
- - DONE - Make the table a variable
- - DONE - Create a method to get all fields from the selected table.
- - DONE - Create a helper method to have a dropdown of fields
- - DONE - Turn this into an engine so that I can include asset pipeline javascript.
- - DONE - Get the Email all button to work
+*** TODO Write tests
+*** TODO Schedule repetitive mail outs
