@@ -12,12 +12,5 @@ ActiveRecord::Schema.define do
     t.string   "email"
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
-    t.string   "mobile"
-    t.string   "home_phone"
-    t.string   "work_phone"
-    t.string   "address"
-    t.string   "suburb"
-    t.string   "state"
-    t.string   "postcode"
   end
 end
