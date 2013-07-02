@@ -4,6 +4,8 @@ group :test do
   gem 'activerecord'
   gem 'actionmailer'
   gem 'actionpack' # action_controller, action_view
+  gem 'sqlite3'
+  gem 'debugger'
   gem 'sprockets'
   gem 'rspec-rails'
   gem 'combustion', '~> 0.5.0'
