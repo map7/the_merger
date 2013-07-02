@@ -13,17 +13,16 @@ describe TheMerger do
 
   describe "#merge_fields" do
     context "body is set to Dear [firstname] [lastname]" do
-      it "replaces [firstname] with Michael" do
+      it "replaces [firstname] & [lastname] with Michael & Pope respectively" do
         merge_fields("Dear [firstname] [lastname]",@user).should eq("Dear Michael Pope")
       end
     end
 
     context "body is set to Dear [firstname] [lastname], [address]" do
-      it "replaces [firstname] with Michael" do
+      it "replaces fields which exist in the model" do
         merge_fields("Dear [firstname] [lastname], [address]",@user).should eq("Dear Michael Pope, [address]")
       end
     end
-
   end
 
   describe "#fields" do
