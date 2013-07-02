@@ -10,7 +10,10 @@ module TheMerger
   #
   # Merge the fields into the body and send emails
   #
-  def mail_merge(from, subject,original_body)
+  def mail_merge(options={})
+    from = options[:from]
+    subject = options[:subject]
+    original_body = options[:body]
     
     # For all users
     model.all.each do |user|
