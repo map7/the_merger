@@ -52,7 +52,7 @@ Where you need to insert fields (I usually create a 'letters' table) put the fol
 Currently it's just one method and this is how you pass it information
 
     body = "Dear [firstname] [lastname], Please update your listing, from Mick"
-    TheMerger.merge_fields(body, "firstname", "lastname")
+    TheMerger.mail_merge(body, "firstname", "lastname")
 
 
 ** Contributing

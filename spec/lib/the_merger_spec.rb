@@ -10,8 +10,23 @@ describe TheMerger do
   before do
     @user = User.create(firstname: "Michael", lastname: "Pope", email: "map7777@gmail.com")
   end
-  
-  describe "model_fields" do
+
+  describe "#merge_fields" do
+    context "body is set to Dear [firstname] [lastname]" do
+      it "replaces [firstname] with Michael" do
+        merge_fields("Dear [firstname] [lastname]",@user).should eq("Dear Michael Pope")
+      end
+    end
+
+    context "body is set to Dear [firstname] [lastname], [address]" do
+      it "replaces [firstname] with Michael" do
+        merge_fields("Dear [firstname] [lastname], [address]",@user).should eq("Dear Michael Pope, [address]")
+      end
+    end
+
+  end
+
+  describe "#fields" do
     it "returns fields for the model excluding created_at, updated_at & id" do
       fields.should eq(%w[firstname lastname email])
     end
