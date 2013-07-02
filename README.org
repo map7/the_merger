@@ -15,46 +15,46 @@ There is a demo app here: https://github.com/map7/mailout
 
 Add this line to your application's Gemfile:
 
-    gem 'the_merger'
+: gem 'the_merger'
 
 And then execute:
 
-    $ bundle
+: bundle
 
 Or install it yourself as:
 
-    $ gem install the_merger
+: gem install the_merger
 
 ** Configure
 
 When using TheMerger in a controller you have to add the following line to the top
     
-    include TheMerger
+: include TheMerger
 
 Create a yaml file in your config directory called 'the_merger.yml' with something like this
 
-    ---
-    merge_model: "Client"
+: ---
+: merge_model: "Client"
 
 
 To use the javascript included in this gem put the following in your application.js
 
-    //= require the_merger/application
+: //= require the_merger/application
 
 
 Where you need to insert fields (I usually create a 'letters' table) put the following in the form, just above the text_area.
 
-    <%= field_selection %>
+: <%= field_selection %>
 
 
 ** Usage
 
 Currently it's just one method and this is how you pass it information
 
-    TheMerger.mail_merge(
-		from: "from@example.com",
-		subject: "update_listing",
-		body: "Dear [firstname] [lastname], Please update your listing, from Mick")
+: TheMerger.mail_merge(
+:   from: "from@example.com",
+:   subject: "update_listing",
+:   body: "Dear [firstname] [lastname], Please update your listing, from Mick")
 
 
 ** Contributing
@@ -66,13 +66,12 @@ Currently it's just one method and this is how you pass it information
 5. Create new Pull Request
 
 ** Tasks
-*** DONE Get all users from the users table
-*** DONE Mail merge and output to the screen
-*** DONE Make the table a variable
-*** DONE Create a method to get all fields from the selected table.
-*** DONE Create a helper method to have a dropdown of fields
-*** DONE Turn this into an engine so that I can include asset pipeline javascript.
-*** DONE Get the Email all button to work
-
-*** TODO Write tests
-*** TODO Schedule repetitive mail outs
+- [X] Get all users from the users table
+- [X] Mail merge and output to the screen
+- [X] Make the table a variable
+- [X] Create a method to get all fields from the selected table.
+- [X] Create a helper method to have a dropdown of fields
+- [X] Turn this into an engine so that I can include asset pipeline javascript.
+- [X] Get the Email all button to work
+- [ ] Write tests
+- [ ] Schedule repetitive mail outs
