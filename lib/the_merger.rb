@@ -11,18 +11,14 @@ module TheMerger
   # Merge the fields into the body and send emails
   #
   def mail_merge(options={})
-    from = options[:from]
-    subject = options[:subject]
-    original_body = options[:body]
-    
     # For all users
     model.all.each do |user|
       
       # Merge fields for this user into the body
-      body = merge_fields(original_body.dup, user)
+      body = merge_fields(options[:body].dup, user)
       
       # Send the emails
-      TheMerger::Mailer.batch_mail(from, subject, body, user).deliver
+      TheMerger::Mailer.batch_mail(options[:from], options[:subject], body, user).deliver
     end
   end
   
