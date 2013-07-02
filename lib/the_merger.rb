@@ -10,7 +10,7 @@ module TheMerger
   #
   # Merge the fields into the body and send emails
   #
-  def mail_merge(subject,original_body)
+  def mail_merge(from, subject,original_body)
     
     # For all users
     model.all.each do |user|
@@ -19,9 +19,7 @@ module TheMerger
       body = merge_fields(original_body.dup, user)
       
       # Send the emails
-      mailer = TheMerger::Mailer.batch_mail("from@example.com", subject, body, user)
-      mailer.deliver
-
+      TheMerger::Mailer.batch_mail(from, subject, body, user).deliver
     end
   end
   
