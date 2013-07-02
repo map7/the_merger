@@ -7,10 +7,6 @@ module TheMerger
   # - merge_model:   User
   #
 
-  def self.foo
-    "bar"
-  end
-  
   def merge_fields(subject,original_body)
     parse_config
     
