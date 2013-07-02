@@ -8,9 +8,7 @@ module TheMerger
   #
 
   def merge_fields(subject,original_body)
-    parse_config
-    
-    @merge_model.constantize.all.each do |user|
+    merge_model.constantize.all.each do |user|
       body = original_body.dup
       
       model_fields.each do |field|
@@ -32,20 +30,17 @@ module TheMerger
   end
 
   def model_fields
-    parse_config
-    @merge_model.constantize.attribute_names.reject{|x| %w[created_at updated_at id].include?(x)}
+    merge_model.constantize.attribute_names.reject{|x| %w[created_at updated_at id].include?(x)}
   end
   
   private
 
-  def parse_config
-    path = "#{Rails.root}/config/the_merger.yml"
-    
-    if File.exists?(path)
+  def merge_model
+    if File.exists?(path = "#{Rails.root}/config/the_merger.yml")
       conf=YAML::load(IO.read(path))
-      @merge_model = conf["merge_model"]
+      conf["merge_model"]
     else
-      @merge_model = "User"
+      "User"
     end
   end  
 end
