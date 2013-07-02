@@ -1,0 +1,1 @@
+require 'the_merger'
