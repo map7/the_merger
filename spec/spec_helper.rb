@@ -3,7 +3,7 @@ require 'bundler/setup'
 
 require 'combustion'
 
-Combustion.initialize! :action_view, :action_mailer
+Combustion.initialize! :action_view, :action_mailer, :active_record, :sprockets
 
 require 'rspec/rails'
 
