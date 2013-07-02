@@ -26,6 +26,9 @@ module TheMerger
     end
   end
   
+  #
+  # Replace fields which are in square brackets with data from the chosen model.
+  #
   def merge_fields(body,user)
     fields.each do |field|
       body = body.gsub!("[#{field}]", user.send(field)) || body
