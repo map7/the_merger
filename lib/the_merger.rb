@@ -8,10 +8,10 @@ module TheMerger
   #
 
   def merge_fields(subject,original_body)
-    merge_model.constantize.all.each do |user|
+    model.all.each do |user|
       body = original_body.dup
       
-      model_fields.each do |field|
+      fields.each do |field|
         newbody = body.gsub!("[#{field}]", user.send(field))
         body = newbody unless newbody.nil?
       end
@@ -24,23 +24,23 @@ module TheMerger
   end
 
   def field_selection
-    body = select_tag :field, options_for_select(model_fields)
+    body = select_tag :field, options_for_select(fields)
     body += button_tag "Insert", class: "insert_field"
     content_tag(:div, body, class: "merge_field")
   end
 
-  def model_fields
-    merge_model.constantize.attribute_names.reject{|x| %w[created_at updated_at id].include?(x)}
+  def fields
+    model.attribute_names.reject{|x| %w[created_at updated_at id].include?(x)}
   end
   
   private
 
-  def merge_model
+  def model
     if File.exists?(path = "#{Rails.root}/config/the_merger.yml")
       conf=YAML::load(IO.read(path))
-      conf["merge_model"]
+      conf["merge_model"].constantize
     else
-      "User"
+      User
     end
   end  
 end

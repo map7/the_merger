@@ -13,7 +13,7 @@ describe TheMerger do
   
   describe "model_fields" do
     it "returns fields for the model excluding created_at, updated_at & id" do
-      model_fields.should eq(%w[firstname lastname email])
+      fields.should eq(%w[firstname lastname email])
     end
   end
 end
