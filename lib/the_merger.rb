@@ -7,45 +7,57 @@ module TheMerger
   # - merge_model:   User
   #
 
-  def merge_fields(subject,original_body)
-    parse_config
-    
-    @merge_model.constantize.all.each do |user|
-      body = original_body.dup
+  #
+  # Merge the fields into the body and send emails
+  #
+  def mail_merge(options={})
+    # For all users
+    model.all.each do |user|
       
-      model_fields.each do |field|
-        newbody = body.gsub!("[#{field}]", user.send(field))
-        body = newbody unless newbody.nil?
-      end
-
+      # Merge fields for this user into the body
+      body = merge_fields(options[:body].dup, user)
+      
       # Send the emails
-      mailer = TheMerger::Mailer.batch_mail("from@example.com", subject, body, user)
-      mailer.deliver
-
+      TheMerger::Mailer.batch_mail(options[:from], options[:subject], body, user).deliver
     end
   end
+  
+  #
+  # Replace fields which are in square brackets with data from the chosen model.
+  #
+  def merge_fields(body,user)
+    fields.each do |field|
+      body = body.gsub!("[#{field}]", user.send(field)) || body
+    end
+    body
+  end
 
+  #
+  # View Helper method (Optional)
+  #
+  # Selection box with fields from your model and an insert button
+  #
   def field_selection
-    body = select_tag :field, options_for_select(model_fields)
+    body = select_tag :field, options_for_select(fields)
     body += button_tag "Insert", class: "insert_field"
     content_tag(:div, body, class: "merge_field")
   end
 
-  def model_fields
-    parse_config
-    @merge_model.constantize.attribute_names.reject{|x| %w[created_at updated_at id].include?(x)}
+  #
+  # Return all the fields from your configured model except created_at, updated_at & id
+  #
+  def fields
+    model.attribute_names.reject{|x| %w[created_at updated_at id].include?(x)}
   end
   
   private
 
-  def parse_config
-    path = "#{Rails.root}/config/the_merger.yml"
-    
-    if File.exists?(path)
+  def model
+    if File.exists?(path = "#{Rails.root}/config/the_merger.yml")
       conf=YAML::load(IO.read(path))
-      @merge_model = conf["merge_model"]
+      conf["merge_model"].constantize
     else
-      @merge_model = "User"
+      User
     end
   end  
 end
