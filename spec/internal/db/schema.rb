@@ -10,6 +10,7 @@ ActiveRecord::Schema.define do
     t.string   "firstname"
     t.string   "lastname"
     t.string   "email"
+    t.integer  "age"
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
   end

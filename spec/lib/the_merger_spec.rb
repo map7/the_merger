@@ -2,13 +2,13 @@ require 'spec_helper'
 include TheMerger
 
 class User < ActiveRecord::Base
-  attr_accessible :email, :firstname, :lastname
+  attr_accessible :email, :firstname, :lastname, :age
 end
 
 describe TheMerger do
 
   before do
-    @user = User.create(firstname: "Michael", lastname: "Pope", email: "map7777@gmail.com")
+    @user = User.create(firstname: "Michael", lastname: "Pope", email: "map7777@gmail.com", age: 99)
   end
 
   describe "#merge_fields" do
@@ -18,6 +18,12 @@ describe TheMerger do
       end
     end
 
+    context "body includes a number" do
+      it "replaces [age] with 99" do
+        merge_fields("Are you over [age] years old?",@user).should eq("Are you over 99 years old?")
+      end
+    end
+    
     context "body is set to Dear [firstname] [lastname], [address]" do
       it "replaces fields which exist in the model" do
         merge_fields("Dear [firstname] [lastname], [address]",@user).should eq("Dear Michael Pope, [address]")
@@ -27,7 +33,7 @@ describe TheMerger do
 
   describe "#fields" do
     it "returns fields for the model excluding created_at, updated_at & id" do
-      fields.should eq(%w[firstname lastname email])
+      fields.should eq(%w[firstname lastname email age])
     end
   end
 end

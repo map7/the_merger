@@ -27,7 +27,7 @@ module TheMerger
   #
   def merge_fields(body,user)
     fields.each do |field|
-      body = body.gsub!("[#{field}]", user.send(field)) || body
+      body = body.gsub!("[#{field}]", user.send(field).to_s) || body
     end
     body
   end
