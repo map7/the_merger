@@ -27,7 +27,7 @@ Or install it yourself as:
 
 ** Configure
 
-When using TheMerger in a controller you have to add the following line to the top
+When using TheMerger in a controller you have to add the following line to the top. EG: the default would be the users controller as you are doing the mail merge there.
     
 : include TheMerger
 
@@ -45,6 +45,8 @@ To use the javascript included in this gem put the following in your application
 Where you need to insert fields (I usually create a 'letters' table) put the following in the form, just above the text_area.
 
 : <%= field_selection %>
+
+Give the text_area you want to interact with the class 'mail_merge_body' so that the insert button knows where to insert the field selected.
 
 
 ** Usage
@@ -75,3 +77,5 @@ Currently it's just one method and this is how you pass it information
 - [X] Get the Email all button to work
 - [ ] Write tests
 - [ ] Schedule repetitive mail outs
+- [ ] Make compatible with tinymce
+
