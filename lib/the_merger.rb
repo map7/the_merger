@@ -32,6 +32,8 @@ module TheMerger
     end
   end
 
+  
+  
   #
   # Replace fields which are in square brackets with data from the chosen model.
   #

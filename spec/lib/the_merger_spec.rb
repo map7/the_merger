@@ -8,12 +8,18 @@ end
 describe TheMerger do
 
   before do
-    @user = User.create(firstname: "Michael", lastname: "Pope", email: "map7777@gmail.com", age: 99)
+    @user = User.create(firstname: "Michael",
+                        lastname: "Pope",
+                        email: "map7777@gmail.com",
+                        age: 99)
   end
 
   describe "#mail_merge" do
     before do
-      @second_user = User.create(firstname: "John", lastname: "Smith", email: "john.smith@gmail.com", age: 30)  
+      @second_user = User.create(firstname: "John",
+                                 lastname: "Smith",
+                                 email: "john.smith@gmail.com",
+                                 age: 30)  
       @mailer = double()
       @mailer.stub(:deliver)
     end
