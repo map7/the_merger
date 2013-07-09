@@ -20,11 +20,11 @@ module TheMerger
   def mail_merge(opts={})
 
     # Go through and get the collection to merge & send.
-    if opts[:group]
+    if opts[:group]               # Subset
       results = opts[:group]
-    elsif opts[:single]
+    elsif opts[:single]           # Single
       results = [opts[:single]]
-    else
+    else                          # ALL entries in model
       results = model.all
     end
     
