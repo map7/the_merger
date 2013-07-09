@@ -14,10 +14,12 @@ module TheMerger
   #  from
   #  subject
   #  body
-  #  group (optional subset)
+  #  group  (optional subset of users)
+  #  single (optional single user)
   #
   def mail_merge(options={})
     group = options[:group] ? options[:group] : model.all
+    group = [options[:single]] if options[:single]
     
     # For all users
     group.each do |user|

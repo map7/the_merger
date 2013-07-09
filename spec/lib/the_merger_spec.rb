@@ -34,6 +34,16 @@ describe TheMerger do
                    group: [@user])
       end
     end
+
+    context "email one user" do
+      it "calls batch once" do
+        TheMerger::Mailer.should_receive(:batch_mail).once.and_return(@mailer)
+        mail_merge(from: 'user@example.com',
+                   subject: 'test merge',
+                   body: 'Hello [firstname]',
+                   single: @user)
+      end
+    end
   end
 
   describe "#merge_fields" do
