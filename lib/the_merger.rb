@@ -17,22 +17,28 @@ module TheMerger
   #  group  (optional subset of users)
   #  single (optional single user)
   #
-  def mail_merge(options={})
-    group = options[:group] ? options[:group] : model.all
-    group = [options[:single]] if options[:single]
-    
-    # For all users
-    group.each do |user|
-      
-      # Merge fields for this user into the body
-      body = merge_fields(options[:body].dup, user)
-      
-      # Send the emails
-      TheMerger::Mailer.batch_mail(options[:from], options[:subject], body, user).deliver
+  def mail_merge(opts={})
+
+    # Go through and get the collection to merge & send.
+    if opts[:group]
+      users = opts[:group]
+    elsif opts[:single]
+      users = [opts[:single]]
+    else
+      users = model.all
     end
+    
+    # Go through all users, merge & send.
+    users.each {|user| merge_and_send(opts[:from], opts[:subject], opts[:body].dup, user)}
   end
 
-  
+  def merge_and_send(from,subject,body,user)
+    # Merge fields for this user into the body
+    body = merge_fields(body, user)
+    
+    # Send the emails
+    TheMerger::Mailer.batch_mail(from, subject, body, user).deliver
+  end
   
   #
   # Replace fields which are in square brackets with data from the chosen model.
