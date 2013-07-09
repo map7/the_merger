@@ -21,15 +21,15 @@ module TheMerger
 
     # Go through and get the collection to merge & send.
     if opts[:group]
-      users = opts[:group]
+      results = opts[:group]
     elsif opts[:single]
-      users = [opts[:single]]
+      results = [opts[:single]]
     else
-      users = model.all
+      results = model.all
     end
     
-    # Go through all users, merge & send.
-    users.each {|user| merge_and_send(opts[:from], opts[:subject], opts[:body].dup, user)}
+    # Go through all results, merge & send.
+    results.each {|user| merge_and_send(opts[:from], opts[:subject], opts[:body].dup, user)}
   end
 
   def merge_and_send(from,subject,body,user)
