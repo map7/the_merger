@@ -76,7 +76,7 @@ Currently it's just one method and this is how you pass it information
 - [X] Turn this into an engine so that I can include asset pipeline javascript.
 - [X] Get the Email all button to work
 - [X] Write tests
-- [ ] Allow filtering or passing a subset of users to send email to.
+- [X] Allow filtering or passing a subset of users to send email to.
 - [ ] Schedule repetitive mail outs
 - [ ] Make compatible with tinymce
 
