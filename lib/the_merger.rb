@@ -10,9 +10,17 @@ module TheMerger
   #
   # Merge the fields into the body and send emails
   #
+  # Options;
+  #  from
+  #  subject
+  #  body
+  #  group (optional subset)
+  #
   def mail_merge(options={})
+    group = options[:group] ? options[:group] : model.all
+    
     # For all users
-    model.all.each do |user|
+    group.each do |user|
       
       # Merge fields for this user into the body
       body = merge_fields(options[:body].dup, user)
@@ -21,7 +29,7 @@ module TheMerger
       TheMerger::Mailer.batch_mail(options[:from], options[:subject], body, user).deliver
     end
   end
-  
+
   #
   # Replace fields which are in square brackets with data from the chosen model.
   #

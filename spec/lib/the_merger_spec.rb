@@ -11,6 +11,31 @@ describe TheMerger do
     @user = User.create(firstname: "Michael", lastname: "Pope", email: "map7777@gmail.com", age: 99)
   end
 
+  describe "#mail_merge" do
+    before do
+      @second_user = User.create(firstname: "John", lastname: "Smith", email: "john.smith@gmail.com", age: 30)  
+      @mailer = double()
+      @mailer.stub(:deliver)
+    end
+
+    context "on model" do
+      it "calls batch twice" do
+        TheMerger::Mailer.should_receive(:batch_mail).twice.and_return(@mailer)
+        mail_merge(from: 'user@example.com', subject: 'test merge', body: 'Hello [firstname]')
+      end
+    end
+
+    context "subset of the model" do
+      it "calls batch once" do
+        TheMerger::Mailer.should_receive(:batch_mail).once.and_return(@mailer)
+        mail_merge(from: 'user@example.com',
+                   subject: 'test merge',
+                   body: 'Hello [firstname]',
+                   group: [@user])
+      end
+    end
+  end
+
   describe "#merge_fields" do
     context "body is set to Dear [firstname] [lastname]" do
       it "replaces [firstname] & [lastname] with Michael & Pope respectively" do
