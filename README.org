@@ -53,10 +53,31 @@ Give the text_area you want to interact with the class 'mail_merge_body' so that
 
 Currently it's just one method and this is how you pass it information
 
+*** Email all
+To send a mail merge to all elements within your 'merge_model'. EG: all clients
+
 : TheMerger.mail_merge(
 :   from: "from@example.com",
 :   subject: "update_listing",
 :   body: "Dear [firstname] [lastname], Please update your listing, from Mick")
+
+*** Email subset
+To send a mail merge to all elements within your 'merge_model'. EG: all clients
+
+: TheMerger.mail_merge(
+:   from: "from@example.com",
+:   subject: "update_listing",
+:   body: "Dear [firstname] [lastname], Please update your listing, from Mick")
+:   group: Client.where(suburb: "Fitzroy")
+
+*** Email single
+To send a mail merge to all elements within your 'merge_model'. EG: all clients
+
+: TheMerger.mail_merge(
+:   from: "from@example.com",
+:   subject: "update_listing",
+:   body: "Dear [firstname] [lastname], Please update your listing, from Mick")
+:   single: Client.find(params[:id])
 
 
 ** Contributing
