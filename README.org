@@ -79,6 +79,11 @@ To send a mail merge to all elements within your 'merge_model'. EG: all clients
 :   body: "Dear [firstname] [lastname], Please update your listing, from Mick")
 :   single: Client.find(params[:id])
 
+** Emails can be written using markdown
+
+Markdown reference: http://daringfireball.net/projects/markdown/
+
+This will create a HTML email.
 
 ** Contributing
 

@@ -13,7 +13,7 @@ Gem::Specification.new do |gem|
   gem.homepage      = "https://github.com/map7/the_merger"
 
   gem.add_dependency "mail"
-  gem.add_dependency "maildown"
+  gem.add_dependency "redcarpet"
   
   gem.files         = `git ls-files`.split($/)
   gem.executables   = gem.files.grep(%r{^bin/}).map{ |f| File.basename(f) }
