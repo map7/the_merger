@@ -4,8 +4,8 @@ class TheMerger::Mailer < ActionMailer::Base
     mail(from: from, 
          to: person.email,
          subject: subject) do |format|
-      format.html {body.html_safe}
       format.text {body}      
+      format.html {body.html_safe}
     end
   end  
 end
