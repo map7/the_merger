@@ -11,6 +11,7 @@ Gem::Specification.new do |gem|
   gem.description   = %q{Mail merge a table of fields into a standard letter}
   gem.summary       = %q{Mail Merge}
   gem.homepage      = "https://github.com/map7/the_merger"
+  gem.license       = 'MIT'
 
   gem.add_dependency "mail"
   gem.add_dependency "redcarpet"
